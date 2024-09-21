@@ -14,7 +14,7 @@ const Products = () => {
   if (isError) {
     return <div>Error: {error.message}</div>;
   }
-  console.log(data);
+
   return (
     <>
       <Container>
@@ -31,7 +31,12 @@ const Products = () => {
           }
         >
           {data?.map((product: Product) => {
-            return <ProductCard product={product} />;
+            return (
+              <ProductCard
+                key={`product-list-${product.id}`}
+                product={product}
+              />
+            );
           })}
         </div>
       </Container>

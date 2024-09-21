@@ -15,7 +15,7 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <Link
-      key={`product-list-${product.id}`}
+      // key={`product-list-${product.id}`}
       to={`/products/${product.id}/${product.name
         .toLowerCase()
         .replace(/\s+/g, "-")}`}

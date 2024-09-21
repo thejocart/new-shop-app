@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
-import { Product } from "../../types/Product"; // Assuming you have a Product type
-import { useProducts } from "../../hooks/useProducts"; // Assuming you have a hook to fetch products
+import { Product } from "../../types/Product";
+import { useProducts } from "../../hooks/useProducts";
+import Loader from "../Loader";
 
 const HomeSlider = () => {
-  const { data: products, isLoading, isError } = useProducts(); // Fetch products
+  const { data: products, isLoading, isError } = useProducts();
   const [currentIndex, setCurrentIndex] = useState(0);
 
   // Auto-move to the next product every 3 seconds
@@ -13,14 +14,14 @@ const HomeSlider = () => {
         setCurrentIndex((prevIndex) =>
           prevIndex === products.length - 1 ? 0 : prevIndex + 1
         );
-      }, 3000); // Adjust time as needed
+      }, 3000);
 
       return () => clearInterval(interval); // Cleanup on component unmount
     }
   }, [products]);
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   if (isError) {
@@ -41,11 +42,10 @@ const HomeSlider = () => {
                 <p className="text-lg">${product.price.toFixed(2)}</p>
               </div>
               <img
-                src="/src/assets/images/mouse.png" // Assuming products have an image URL
+                src="/src/assets/images/mouse.png"
                 alt={product.name}
-                className="h-[90%] w-auto object-contain z-10" // Updated to make the image smaller
+                className="h-[90%] w-auto object-contain z-10"
               />
-              {/* Blur Circles */}
               <div className="absolute left-40 bottom-20 h-[200px] w-[200px] bg-custom-light-blue rounded-full blur-3xl opacity-40 dark:opacity-20"></div>
               <div className="absolute right-[20%] top-20 h-[300px] w-[300px] bg-custom-light-blue rounded-full blur-3xl opacity-40 dark:opacity-20"></div>
             </div>

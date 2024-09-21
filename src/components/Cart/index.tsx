@@ -1,4 +1,4 @@
-import { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useMemo, useRef } from "react";
 import { useCart } from "../../hooks/useCart";
 import { ShoppingCartIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import { CartProps } from "../../types/Cart";
@@ -8,9 +8,14 @@ const Cart: FC<CartProps> = ({ isOpen, toggleCart }) => {
   const { cartItems } = useCart();
   const cartRef = useRef<HTMLDivElement>(null);
 
-  const total = cartItems.reduce(
-    (acc, item) => acc + item.price * item.quantity,
-    0
+  const total = useMemo(
+    () =>
+      cartItems
+        .reduce((acc, item) => {
+          return acc + item.price * item.quantity;
+        }, 0)
+        .toFixed(2),
+    [cartItems]
   );
 
   useEffect(() => {
@@ -25,8 +30,7 @@ const Cart: FC<CartProps> = ({ isOpen, toggleCart }) => {
       document.body.style.overflow = "hidden";
     } else {
       document.removeEventListener("mousedown", handleClickOutside);
-      // Re-enable background scrolling when the cart is closed
-      document.body.style.overflow = "";
+      document.body.style.overflow = ""; // Re-enable background scrolling when the cart is closed
     }
 
     return () => {
@@ -81,9 +85,7 @@ const Cart: FC<CartProps> = ({ isOpen, toggleCart }) => {
 
         {cartItems.length !== 0 && (
           <div className="sticky bottom-0 left-0 w-full py-4 border-t border-gray-400 dark:border-gray-600 ">
-            <h3 className="text-lg font-bold text-center">
-              Total: ${total.toFixed(2)}
-            </h3>
+            <h3 className="text-lg font-bold text-center">Total: ${total}</h3>
           </div>
         )}
       </div>
