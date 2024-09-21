@@ -68,7 +68,7 @@ const OneProduct = () => {
           </div>
           <div className={"flex justify-between items-center mt-10"}>
             <div>
-              <p className={"text-xl md:text-3xl"}>{product?.price}</p>
+              <p className={"text-xl md:text-3xl"}>${product?.price}</p>
             </div>
             <button
               onClick={() => handleAddToCart(product, addToCart)}

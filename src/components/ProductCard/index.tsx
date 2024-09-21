@@ -43,7 +43,7 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
         <div className={"flex justify-between items-center mt-5"}>
           <div>
-            <p className={"text-lg"}>{product?.price}</p>
+            <p className={"text-lg"}>${product?.price}</p>
           </div>
           <button
             onClick={handleButtonClick}
