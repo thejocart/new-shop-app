@@ -19,8 +19,8 @@ A fast, modern web application using **React**, **Vite**, **TypeScript**, and **
 1. **Clone the repo**:
 
    ```bash
-   git clone https://github.com/your-username/your-repo.git
-   cd your-repo
+   git clone https://github.com/thejocart/new-shop-app.git
+   cd new-shop-app
 
    ```
 
