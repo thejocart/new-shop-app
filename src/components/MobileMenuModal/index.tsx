@@ -10,12 +10,12 @@ const MobileMenuModal: FC<MenuProps> = ({
   totalQuantity,
 }) => (
   <div className="lg:hidden">
-    {isMenuOpen && (
+    {isMenuOpen ? (
       <div
         className="fixed inset-0 bg-gray-900 bg-opacity-50 z-10 duration-300"
         onClick={closeMenu}
       ></div>
-    )}
+    ) : null}
     <div
       className={`fixed inset-0 z-20 transform ${
         isMenuOpen ? "translate-x-0" : "translate-x-full"

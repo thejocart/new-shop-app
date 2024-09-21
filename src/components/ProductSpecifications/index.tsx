@@ -12,16 +12,15 @@ const ProductSpecifications = ({ product }: { product: Product }) => (
       Specifications
     </h2>
     <div className={"grid grid-cols-1 md:grid-cols-3 gap-5"}>
-      {specificationsList(product).map(
-        (spec, index) =>
-          spec.value && (
-            <SpecificationItem
-              key={index}
-              icon={spec.icon}
-              values={spec.value}
-              title={spec.label}
-            />
-          )
+      {specificationsList(product).map((spec, index) =>
+        spec.value ? (
+          <SpecificationItem
+            key={index}
+            icon={spec.icon}
+            values={spec.value}
+            title={spec.label}
+          />
+        ) : null
       )}
     </div>
   </div>
