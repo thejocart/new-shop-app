@@ -1,4 +1,3 @@
-// src/constants/specificationsConstants.ts
 import {
   PuzzlePieceIcon,
   ShareIcon,

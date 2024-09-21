@@ -11,6 +11,4 @@ export const handleAddToCart = (
     price: product.price,
     quantity: 1,
   });
-
-  console.log(`${product.name} added to cart`);
 };
