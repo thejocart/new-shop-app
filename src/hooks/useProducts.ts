@@ -3,7 +3,7 @@ import { fetchProducts } from "../services/api";
 
 export const useProducts = () => {
   return useQuery({
-    queryKey: ["users"],
+    queryKey: ["products"],
     queryFn: fetchProducts,
   });
 };
